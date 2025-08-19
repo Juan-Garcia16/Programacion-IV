@@ -17,4 +17,4 @@ for numero in range(cantidad):
     numero = int(input())
     numeros.append(numero)
 for numero in numeros:
-    print(numero, "-", numero ** 2, "-", numero ** 3)
+    print(f"{numero} - {numero**2} - {numero**3}")

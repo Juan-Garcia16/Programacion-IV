@@ -27,3 +27,7 @@ for cadena in cadenas:
   
 print("Cadena mayor:", cadena_mayor)
 print("Cadena menor:", cadena_menor)
+
+# IMPORTANTES
+# cadena_mayor = max(cadenas, key=len)
+# cadena_menor = min(cadenas, key=len)
