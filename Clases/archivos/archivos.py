@@ -10,20 +10,20 @@ while True:
                         Opcion:  '''))
     match opcion:
         case 1:
-            archivo=open(r"C:\Users\pipe_\OneDrive\Desktop\archivo.txt","w")
+            archivo=open(r"clases/archivos/archivo.txt","w")
             mensaje=input("ingrese los datos: ")
             archivo.write(f"{mensaje}\n")
             archivo.close()
         case 2:
-            archivo=open(r"C:\Users\pipe_\OneDrive\Desktop\archivo.txt","r")
+            archivo=open(r"clases/archivos/archivo.txt","r")
             lectura=archivo.read()
             print(lectura)
             archivo.close()
         case 3:
-            archivo=open(r"C:\Users\pipe_\OneDrive\Desktop\archivo.txt","w")
+            archivo=open(r"clases/archivos/archivo.txt","w")
             archivo.close()
         case 4:
-            archivo=open(r"C:\Users\pipe_\OneDrive\Desktop\archivo.txt","a")
+            archivo=open(r"clases/archivos/archivo.txt","a")
             mensaje=input("ingrese los datos: ")
             archivo.write(f"{mensaje}\n")
             archivo.close()
