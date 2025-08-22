@@ -24,11 +24,11 @@ for palabra in lista:
         if vocal in palabra.lower():
             nueva_lista.append(palabra)
             break   
-print("Lista sin cadenas que no contienen vocales:")
+print("\nLista sin cadenas que no contienen vocales:")
 print(nueva_lista)
 
 nueva_lista.sort()
-print("Lista ordenada alfabéticamente:")
+print("\nLista ordenada alfabéticamente:")
 print(nueva_lista)
 
 

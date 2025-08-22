@@ -6,11 +6,17 @@ Lista= [“oso”, “casa”, “murciélago”, “ventana”, “programació
 objetos”, “listas”, “métodos”, “utp”]
 '''
 lista= ["oso", "casa", "murciélago", "ventana", "programación", "objetos", "listas", "métodos", "utp"]
-caracter = input("Ingrese un carácter: ")
+caracter = input("Ingrese un carácter: ").lower()
+encontrado = False
+
 for cadena in lista:
     if caracter in cadena:
         print(cadena, "|", end=" ")
+        encontrado = True
         if len(cadena) % 2 == 0:
             print("par")
         else:
             print("Impar")
+
+if not encontrado:
+    print("No hay palabras con ese carácter")

@@ -3,7 +3,7 @@
 que no sean vocales en una lista de 10 cadenas.
 '''
 conteo = 0
-vocales = ["a", "e", "i", "o", "u"]
+vocales = ["a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú"]
 lista= ["oso", "casa", "murciélago", "ventana", "programación", "objetos", "listas", "métodos", "utp", "sistemas"]
 for cadena in lista:
     for caracter in cadena.lower():  

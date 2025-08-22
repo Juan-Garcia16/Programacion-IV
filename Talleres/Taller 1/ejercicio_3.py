@@ -19,18 +19,38 @@ materias = []
 promedios_materias = []
 
 print("\tGestión Académica")
-cantidad_materias = int(input("Cuántas materias desea ingresar?: "))
-print("Ingrese el nombre de cada materia")
+cantidad_materias = int(input("Cuantas materias desea ingresar?: "))
+print("Ingrese el nombre de cada materia:")
 
-for materia in range(cantidad_materias):
+for i in range(cantidad_materias):
     materia = input("Materia: ")
     materias.append(materia)
     
-    print(f"Ingrese las 4 notas de {materia}.")
-    for nota in range(4):
-        nota = float(input())
-        
-       
+    notas = []
+    print(f"Ingrese las 4 notas de {materia}:")
+    for i in range(4):
+        nota = float(input(f"Nota {i + 1}: "))
+        notas.append(nota)
+    
+    promedio = sum(notas) / len(notas)
+    promedios_materias.append(promedio)
+    
+    print(f"materia -", end=" ")
+    for i in range(4):
+        print(f"nota{i + 1}: {notas[i]}", end=" ")
+    print("\n")
+    if promedio < 3:
+        print(f"Promedio de {materia}: {round(promedio, 2)} - asignatura perdida")
+    else:
+        print(f"Promedio de {materia}: {round(promedio, 2)} - asignatura ganada")
+    print("-" * 40)
 
-print(materias)
-#print(notas_materias)
+promedio_general = sum(promedios_materias) / len(promedios_materias)
+print(f"Promedio general: {round(promedio_general, 2)}")
+
+if promedio_general < 3:
+    print("Semestre perdido")
+elif 3 <= promedio_general < 4:
+    print("Buen trabajo")
+else:
+    print("Felicidades serás becado!")

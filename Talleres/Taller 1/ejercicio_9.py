@@ -7,5 +7,6 @@ import random
 
 lista = [random.randint(1, 50) for i in range(15)]
 
+print(f"Lista generada: {lista}\n")
 for numero in lista:
     print(f"Número: {numero}, cuadrado: {numero ** 2}, cubo: {numero ** 3}")
