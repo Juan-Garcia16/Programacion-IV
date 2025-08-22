@@ -1,0 +1,2 @@
+Original: 678
+Invertido: 876
