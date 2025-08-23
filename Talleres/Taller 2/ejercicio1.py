@@ -18,7 +18,7 @@ class Numero:
         
     def escribir_archivo(self):
         num_texto = str(self.num)
-        num_invertido = "".join(reversed(num_texto))
+        num_invertido = "".join(reversed(num_texto)) #necesario el join porque reversed devuelve un objeto
         
         archivo = open(r"numeros.txt", "w")
         archivo.write(f"Original: {num_texto}\n")

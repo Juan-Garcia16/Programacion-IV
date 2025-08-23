@@ -33,7 +33,7 @@ if resultado > 0:
     print("Se guardaron los resultados en 'frases.txt")
 else:
     archivo = open(r"frases.txt", "w")
-    archivo.write("La palabra no se encuentra en ninguna frase")
+    archivo.write(f"La palabra '{palabra_clave}' no se encuentra en ninguna frase")
     archivo.close()
     print("Se guardaron los resultados en 'frases.txt")
 
