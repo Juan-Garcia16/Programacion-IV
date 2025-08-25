@@ -11,8 +11,8 @@ class Numero:
     
     def suma_digitos(self):
         suma = 0
-        num_lista = list(str(self.num))
-        for digito in num_lista:
+        num = str(self.num)
+        for digito in num:
             suma += int(digito)
         print(f"\nSuma de los digitos: {suma}")
         

@@ -1,2 +1,2 @@
-Original: 678
-Invertido: 876
+Original: 345
+Invertido: 543
