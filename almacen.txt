@@ -1,0 +1,10 @@
+001,Laptop,10,3500.0,Electrónica
+010,Zapatos deportivos,18,150.0,Calzado
+002,Mouse,50,25.0,Electrónica
+003,Teclado,30,45.0,Electrónica
+004,Silla ergonómica,15,750.0,Muebles
+005,Escritorio,12,1200.0,Muebles
+007,Leche,80,3.5,Alimentos
+008,Camisa,25,60.0,Ropa
+009,Pantalón,20,90.0,Ropa
+006,Café molido,100,15.0,Alimentos
