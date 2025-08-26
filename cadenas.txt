@@ -1,1 +1,0 @@
-['access', 'angular', 'artificial', 'astro', 'electronica', 'inteligencia', 'oracle', 'udemy', 'unity', 'github', 'linux', 'php', 'platzi', 'python', 'react']
