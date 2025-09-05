@@ -16,10 +16,17 @@ class Evento:
     def __str__(self):
         return f"{self.titulo},{self.fecha},{self.hora},{self.lugar},{self.responsable}"
 
-    def registrar_eventos(eventos, archivo = "agenda.txt"):
-        archivo = open(archivo, "w")
-        for evento in eventos:
-            archivo.write(str(evento) + "\n")
+    def registrar_evento(archivo = "agenda.txt"):
+        titulo = input("Ingrese el título del evento: ")
+        fecha = input("Ingrese la fecha (YYYY-MM-DD): ")
+        hora = input("Ingrese la hora (HH:MM): ")
+        lugar = input("Ingrese el lugar: ")
+        responsable = input("Ingrese el responsable: ")
+
+        evento = Evento(titulo, fecha, hora, lugar, responsable)
+        
+        archivo = open(archivo, "a")
+        archivo.write(str(evento) + "\n")
         archivo.close()
         
     def eventos_proxima_semana(archivo = "agenda.txt"):
@@ -34,16 +41,19 @@ class Evento:
             if (lista_fecha[1] == "09") and (1 <= int(lista_fecha[2]) <=7 ):
                 print(f"{titulo}: {fecha}")
 
-        
+    
+while True:
+    print("\n1. Registrar un evento")
+    print("2. Ver eventos de la próxima semana")
+    print("3. Salir")
+    opcion = input("Seleccione una opción: ")
 
-eventos = [
-    Evento("Concierto de Rock", "2025-09-07", "20:00", "Estadio Nacional", "Carlos Pérez"),
-    Evento("Feria del Libro", "2025-09-05", "10:00", "Centro de Convenciones", "Ana Torres"),
-    Evento("Maratón Ciudad", "2025-11-01", "06:30", "Parque Principal", "Luis Gómez"),
-    Evento("Congreso de Tecnología", "2025-08-30", "09:00", "Hotel Intercontinental", "María Rodríguez"),
-    Evento("Obra de Teatro: Hamlet", "2025-09-03", "19:30", "Teatro Central", "Pedro Ramírez"),
-    Evento("Taller de Fotografía", "2025-09-12", "15:00", "Casa de la Cultura", "Laura Sánchez")
-]
-        
-Evento.registrar_eventos(eventos)
-Evento.eventos_proxima_semana()
+    if opcion == "1":
+        Evento.registrar_evento()
+    elif opcion == "2":
+        Evento.eventos_proxima_semana()
+    elif opcion == "3":
+        print("Saliendo del programa")
+        break
+    else:
+        print("Opción no valida, intente de nuevo")

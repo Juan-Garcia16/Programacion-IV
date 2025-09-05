@@ -1,0 +1,5 @@
+Honda,Civic,2025,Automóvil,XYZ789
+Chevrolet,Spark,2025,Automóvil,CHEV19
+Mercedes-Benz,Sprinter,2025,Camión,SPR2023
+Mazda,CX-5,2025,SUV,MZD555
+Volkswagen,Jetta,2025,Automóvil,VWJ717
