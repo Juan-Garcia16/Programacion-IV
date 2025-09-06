@@ -18,8 +18,8 @@ class Encuesta:
         with open(nombre_archivo, "a") as archivo:
             archivo.write(str(self) + "\n")
     
-    def estadisticas_por_genero(self):
-        nombre_archivo = f"encuesta_{self.ciudad}.txt"
+    def estadisticas_por_genero(ciudad):
+        nombre_archivo = f"encuesta_{ciudad}.txt"
         conteo_genero = {}
         
         with open(nombre_archivo, "r") as archivo:
@@ -38,8 +38,24 @@ encuestas = [
     Encuesta(30, "Femenino", "Medellin", "Excelente"),
     Encuesta(22, "Masculino", "Cali", "Regular"),
     Encuesta(28, "Femenino", "Bogota", "Mala"),
+    Encuesta(35, "Masculino", "Medellin", "Buena"),
+    Encuesta(40, "Femenino", "Cali", "Excelente"),
+    Encuesta(29, "Masculino", "Bogota", "Regular"),
+    Encuesta(33, "Femenino", "Medellin", "Mala"),
+    Encuesta(26, "Masculino", "Cali", "Buena"),
+    Encuesta(31, "Femenino", "Cali", "Excelente")
 ]
 
 for encuesta in encuestas:
     encuesta.guardar_por_ciudad()
-    
+
+ciudades = []
+for encuesta in encuestas:
+    if encuesta.ciudad not in ciudades:
+        ciudades.append(encuesta.ciudad)
+
+for ciudad in ciudades:
+    estadisticas = Encuesta.estadisticas_por_genero(ciudad)
+    print(f"\nEstadísticas por género en {ciudad}:")
+    for genero, conteo in estadisticas.items():
+        print(f"{genero}: {conteo}")
