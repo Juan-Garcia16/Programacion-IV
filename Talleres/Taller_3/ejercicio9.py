@@ -18,18 +18,30 @@ class Empresa:
     def __str__(self):
         return f"{self.nombre},{self.departamento},{self.salario},{self.bonificacion},{self.descuento},{self.salario_neto()}"
     
-    def guardar_reporte_por_departamento(empleados, nombre_archivo):
+    def guardar_reporte_por_departamento(empleados):
         departamentos = {}
         for empleado in empleados:
             if empleado.departamento not in departamentos:
-                #crear una lista para el nuevo departamento
                 departamentos[empleado.departamento] = []
             departamentos[empleado.departamento].append(empleado)
+
+        for departamento, lista_empleados in departamentos.items():
+            nombre_archivo = f"reporte_{departamento}.txt"
+            with open(nombre_archivo, "w") as archivo:
+                for emp in lista_empleados:
+                    archivo.write(str(emp) + "\n")
+            print(f"Reporte guardado en '{nombre_archivo}'")
         
-        with open(nombre_archivo, "w") as archivo:
-            for departamento, empleado_lista in departamentos.items():
-                archivo.write(f"Departamento: {departamento}\n")
-                for empleado in empleado_lista:
-                    archivo.write(str(empleado) + "\n")
-                archivo.write("\n")
-        print(f"Reporte guardado en '{nombre_archivo}'\n")
+        
+empleados = [
+    Empresa("Juan Perez", "Ventas", 3000, 500, 200),
+    Empresa("Ana Gomez", "Marketing", 3500, 600, 300),
+    Empresa("Luis Martinez", "Ventas", 3200, 400, 150),
+    Empresa("Maria Lopez", "Recursos Humanos", 4000, 700, 250),
+    Empresa("Carlos Sanchez", "Marketing", 3600, 500, 200),
+    Empresa("Sofia Ramirez", "Recursos Humanos", 4200, 800, 300),
+    Empresa("Pedro Torres", "Ventas", 3100, 450, 180),
+    Empresa("Laura Martinez", "Ventas", 3700, 550, 220),
+]
+
+Empresa.guardar_reporte_por_departamento(empleados)
