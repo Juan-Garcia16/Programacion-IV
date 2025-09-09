@@ -26,6 +26,7 @@ class GestorEmpleados():
     def agregar_empleado(self, empleado):
         empleado.id = self.siguiente_id
         self.empleados.append(empleado)
+        print(f"Empleado agregado con ID {empleado.id}.")
         self.siguiente_id += 1 #incrementa el ID para el proximo empleado
 
     def eliminar_empleado(self, id):
@@ -79,6 +80,8 @@ class GestorEmpleados():
             print(f"No se encontró empleado con ID {id}.")
             
     def mostrar_empleados(self):
+        print("\nListado de Empleados:")
+        print("-" * 40)
         for empleado in self.empleados:
             print(empleado)
             print(f"Salario con bono: {empleado.calcular_salario()}")
@@ -123,7 +126,6 @@ while True:
         anios_experiencia = int(input("Ingrese los años de experiencia: "))
         empleado = Empleado(nombre, None, salario_base, anios_experiencia)
         gestor.agregar_empleado(empleado)
-        print("Empleado agregado.")
         
     elif opcion == "2":
         if gestor.empleados:
@@ -151,17 +153,26 @@ while True:
             print("No hay empleados registrados.")
             
     elif opcion == "5":
-        gestor.mostrar_empleados()
+        if gestor.empleados:
+            gestor.mostrar_empleados()
+        else:
+            print("No hay empleados registrados.")
         
     elif opcion == "6":
-        nombre_archivo = input("Ingrese el nombre del archivo para guardar (por ejemplo, empleados.txt): ")
-        gestor.guardar_empleados(nombre_archivo)
-        print(f"Empleados guardados en {nombre_archivo}.")
+        if gestor.empleados:
+            nombre_archivo = input("Ingrese el nombre del archivo para guardar (por ejemplo, empleados.txt): ")
+            gestor.guardar_empleados(nombre_archivo)
+            print(f"Empleados guardados en {nombre_archivo}.")
+        else:
+            print("No hay empleados para guardar.")
         
     elif opcion == "7":
         nombre_archivo = input("Ingrese el nombre del archivo para cargar (por ejemplo, empleados.txt): ")
-        gestor.cargar_empleados(nombre_archivo)
-        print(f"Empleados cargados desde {nombre_archivo}.")
+        try:
+            gestor.cargar_empleados(nombre_archivo)
+            print(f"Empleados cargados desde {nombre_archivo}.")
+        except FileNotFoundError:
+            print("Archivo no encontrado.")
         
     elif opcion == "8":
         print("Saliendo del programa.")
