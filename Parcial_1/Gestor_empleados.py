@@ -81,11 +81,11 @@ class GestorEmpleados():
             
     def mostrar_empleados(self):
         print("\nListado de Empleados:")
-        print("-" * 40)
+        print("-" * 80)
         for empleado in self.empleados:
             print(empleado)
             print(f"Salario con bono: {empleado.calcular_salario()}")
-            print("-" * 40)
+            print("-" * 80)
 
     def guardar_empleados(self, nombre_archivo):
         with open(nombre_archivo, "w") as archivo:
@@ -94,6 +94,8 @@ class GestorEmpleados():
                 #NO SÉ SI GUARDAR EL SALARIO TOTAL, DEJO EL BASE POR EL MOMENTO
 
     def cargar_empleados(self, nombre_archivo):
+        self.empleados = []  #limpia la lista actual antes de cargar
+        self.siguiente_id = 1 #reinicia el ID incremental
         with open(nombre_archivo, "r") as archivo:
             for linea in archivo:
                 registro = linea.strip().split(",")
