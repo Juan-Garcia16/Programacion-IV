@@ -51,14 +51,14 @@ class GestorEmpleados():
             
             nuevo_salario = input("Ingrese el nuevo salario base (ENTER para no cambiar): ")
             if nuevo_salario:
-                if nuevo_salario < empleado.salario_base:
+                if float(nuevo_salario) < empleado.salario_base:
                     print("No se puede reducir el salario base.")
                 else:
                     empleado.salario_base = float(nuevo_salario)
             
             nueva_experiencia = input("Ingrese los nuevos años de experiencia (ENTER para no cambiar): ")
             if nueva_experiencia:
-                if nueva_experiencia < empleado.anios_experiencia:
+                if int(nueva_experiencia) < empleado.anios_experiencia:
                     print("No se puede reducir los años de experiencia.")
                 else:
                     empleado.anios_experiencia = int(nueva_experiencia)
