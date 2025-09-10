@@ -46,36 +46,57 @@ class GestorEmpleados():
     def editar_empleado(self, id):
         empleado = self.buscar_empleado(id)
         if empleado:
-            nuevo_nombre = input("Ingrese el nuevo nombre (ENTER para no cambiar): ")
+            cambios = False
+            nuevo_nombre = input("Ingrese el nuevo nombre (ENTER para no cambiar): ").strip()
             if nuevo_nombre:
                 empleado.nombre = nuevo_nombre
-            
-            nuevo_salario = input("Ingrese el nuevo salario base (ENTER para no cambiar): ")
-            if nuevo_salario:
-                if float(nuevo_salario) < empleado.salario_base:
-                    print("No se puede reducir el salario base.")
-                else:
-                    empleado.salario_base = float(nuevo_salario)
-            
-            nueva_experiencia = input("Ingrese los nuevos años de experiencia (ENTER para no cambiar): ")
-            if nueva_experiencia:
-                if int(nueva_experiencia) < empleado.anios_experiencia:
-                    print("No se puede reducir los años de experiencia.")
-                else:
-                    empleado.anios_experiencia = int(nueva_experiencia)
-                    
-            nuevo_id = input("Ingrese el nuevo ID (ENTER para no cambiar): ")
-            if nuevo_id:
-                if self.buscar_empleado(int(nuevo_id)):
-                    print("El ID ya está en uso. No se puede cambiar.")
-                else:
-                    empleado.id = int(nuevo_id)
-                    if empleado.id >= self.siguiente_id:
-                        self.siguiente_id = empleado.id + 1 #asegura que los ID sigan siendo incrementales
+                cambios = True
 
-            if nuevo_nombre or nuevo_salario or nueva_experiencia or nuevo_id:
+            nuevo_salario = input("Ingrese el nuevo salario base (ENTER para no cambiar): ").strip()
+            if nuevo_salario:
+                if not nuevo_salario.replace(".", "", 1).isdigit(): #permite un unico punto decimal
+                    print("El salario debe ser un número válido.")
+                else:
+                    nuevo_salario = float(nuevo_salario)
+                    if nuevo_salario < 0:
+                        print("El salario no puede ser negativo.")
+                    else:
+                        empleado.salario_base = nuevo_salario
+                        cambios = True
+
+            nueva_experiencia = input("Ingrese los nuevos años de experiencia (ENTER para no cambiar): ").strip()
+            if nueva_experiencia:
+                if not nueva_experiencia.isdigit():
+                    print("Los años de experiencia deben ser un número entero válido.")
+                else:
+                    nueva_experiencia = int(nueva_experiencia)
+                    if nueva_experiencia < 0:
+                        print("Los años de experiencia no pueden ser negativos.")
+                    else:
+                        empleado.anios_experiencia = nueva_experiencia
+                        cambios = True
+                        
+            nuevo_id = input("Ingrese el nuevo ID (ENTER para no cambiar): ").strip()
+            if nuevo_id:
+                if not nuevo_id.isdigit():
+                    print("El ID debe ser un número entero válido.")
+                else:
+                    nuevo_id = int(nuevo_id)
+                    if nuevo_id <= 0:
+                        print("El ID debe ser un número entero positivo.")
+                    elif self.buscar_empleado(nuevo_id):
+                        print("El ID ya está en uso. No se puede cambiar.")
+                    else:
+                        empleado.id = nuevo_id
+                        if empleado.id >= self.siguiente_id:
+                            self.siguiente_id = empleado.id + 1  #asegura que los ID sigan siendo incrementales
+                        cambios = True
+
+            if cambios:
                 self.guardar_empleados("empleados.txt")
                 print("Empleado actualizado.")
+            else:
+                print("No se realizaron cambios.")
         else:
             print(f"No se encontró empleado con ID {id}.")
             
@@ -173,7 +194,7 @@ while True:
         try:
             gestor.cargar_empleados(nombre_archivo)
             print(f"Empleados cargados desde {nombre_archivo}.")
-        except FileNotFoundError:
+        except FileNotFoundError: #obligatorio el manejo de error para no frenar el programa
             print("Archivo no encontrado.")
         
     elif opcion == "8":
