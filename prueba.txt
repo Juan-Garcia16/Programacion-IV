@@ -1,3 +1,0 @@
-Juan Pablo,1,5700000.0,2
-Maria Isabella,6,5000000.0,2
-Diego Alejandro Garcia,5,6000000.0,6
