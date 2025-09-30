@@ -1,0 +1,24 @@
+{
+    "codigo": "A001",
+    "nombre": "Juan Gómez",
+    "edad": 20,
+    "anio_ingreso": 2023,
+    "direccion": "Barrio Centro, Casa 12",
+    "telefono": "3023334455",
+    "carrera": "Ingeniería de Sistemas",
+    "semestre": 3,
+    "promedio": 4.2,
+    "creditos": 48
+}
+{
+    "codigo": "A002",
+    "nombre": "María Rodríguez",
+    "edad": 21,
+    "anio_ingreso": 2022,
+    "direccion": "Calle 8 #21-50",
+    "telefono": "3034445566",
+    "carrera": "Ingeniería Electrónica",
+    "semestre": 5,
+    "promedio": 3.8,
+    "creditos": 75
+}

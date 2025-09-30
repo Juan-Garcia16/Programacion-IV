@@ -1,0 +1,22 @@
+{
+    "codigo": "PA001",
+    "nombre": "Andrés Torres",
+    "edad": 23,
+    "anio_ingreso": 2021,
+    "direccion": "Carrera 50 #22-10",
+    "telefono": "3045556677",
+    "carrera": "Ingeniería de Software",
+    "semestre": 7,
+    "promedio": 4.5,
+    "creditos": 90,
+    "categoria": "Auxiliar",
+    "horas_contrato": 10,
+    "tipo_profesor": "Ayudante",
+    "salario_base": 500000,
+    "departamento": "Computación",
+    "materias": [
+        "Programacion",
+        "Estructuras de Datos",
+        "Calculo"
+    ]
+}
