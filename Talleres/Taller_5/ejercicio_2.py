@@ -28,9 +28,9 @@ class Proyecto():
         self.equipo_asignado = equipo_asignado
     
 class Junior(Empleado):
-    def __init__(self, codigo, nombre, id_empleado, correo, telefono, anio_ingreso,
+    def __init__(self, nombre, id_empleado, correo, telefono, salario,
                  lenguaje_principal, mentor, framework):
-        super().__init__(codigo, nombre, id_empleado, correo, telefono, anio_ingreso)
+        super().__init__(nombre, id_empleado, correo, telefono, salario)
         self.lenguaje_principal = lenguaje_principal
         self.mentor = mentor
         self.framework = framework
@@ -50,8 +50,19 @@ class Tester(Empleado):
         self.tipo_prueba = tipo_prueba
     
 class ProjectManager(Empleado, Proyecto):
-    def __init__(self, nombre, id_empleado, correo, telefono, salario):
-        super().__init__(nombre, id_empleado, correo, telefono, salario)
-    
+    def __init__(self, nombre, id_empleado, correo, telefono, salario, 
+                 nombre_proyecto, codigo, cliente, presupuesto, duracion_meses, equipo_asignado,
+                 metodologia, reportes):
+        Empleado.__init__(self, nombre, id_empleado, correo, telefono, salario)
+        Proyecto.__init__(self, nombre_proyecto, codigo, cliente, presupuesto, duracion_meses, equipo_asignado)
+        self.metodologia = metodologia
+        self.reportes = reportes
+
 class LiderTecnico(Senior, Proyecto):
-    hola = 5
+    def __init__(self, nombre, id_empleado, correo, telefono, salario, anios_experiencia, especialidad,
+                 nombre_proyecto, codigo, cliente, presupuesto, duracion_meses, equipo_asignado,
+                 certificaciones, tecnologias):
+        Senior.__init__(self, nombre, id_empleado, correo, telefono, salario, anios_experiencia, especialidad)
+        Proyecto.__init__(self, nombre_proyecto, codigo, cliente, presupuesto, duracion_meses, equipo_asignado)
+        self.certificaciones = certificaciones
+        self.tecnologias = tecnologias
