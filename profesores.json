@@ -1,36 +1,38 @@
-{
-    "codigo": "P001",
-    "nombre": "Carlos Pérez",
-    "edad": 45,
-    "anio_ingreso": 2010,
-    "direccion": "Calle 45 #12-34",
-    "telefono": "3001112233",
-    "categoria": "Titular",
-    "horas_contrato": 40,
-    "tipo_profesor": "Planta",
-    "salario_base": 2000000,
-    "departamento": "Ingeniería de Sistemas",
-    "materias": [
-        "Arquitectura de Computadores",
-        "Ingenieria de Software",
-        "Comunicaciones"
-    ]
-}
-{
-    "codigo": "P002",
-    "nombre": "Laura Martínez",
-    "edad": 38,
-    "anio_ingreso": 2015,
-    "direccion": "Carrera 10 #55-20",
-    "telefono": "3012223344",
-    "categoria": "Asociado",
-    "horas_contrato": 20,
-    "tipo_profesor": "Ayudante",
-    "salario_base": 800000,
-    "departamento": "Matemáticas",
-    "materias": [
-        "Programacion",
-        "Estructuras de Datos",
-        "Calculo"
-    ]
-}
+[
+    {
+        "codigo": "P001",
+        "nombre": "Carlos Pérez",
+        "edad": 45,
+        "anio_ingreso": 2010,
+        "direccion": "Calle 45 #12-34",
+        "telefono": "3001112233",
+        "categoria": "Titular",
+        "horas_contrato": 40,
+        "tipo_profesor": "Planta",
+        "salario_base": 2000000,
+        "departamento": "Ingeniería de Sistemas",
+        "materias": [
+            "Arquitectura de Computadores",
+            "Ingenieria de Software",
+            "Comunicaciones"
+        ]
+    },
+    {
+        "codigo": "P002",
+        "nombre": "Laura Martínez",
+        "edad": 38,
+        "anio_ingreso": 2015,
+        "direccion": "Carrera 10 #55-20",
+        "telefono": "3012223344",
+        "categoria": "Asociado",
+        "horas_contrato": 20,
+        "tipo_profesor": "Planta",
+        "salario_base": 800000,
+        "departamento": "Matemáticas",
+        "materias": [
+            "Arquitectura de Computadores",
+            "Ingenieria de Software",
+            "Comunicaciones"
+        ]
+    }
+]

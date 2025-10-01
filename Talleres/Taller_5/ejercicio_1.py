@@ -135,6 +135,13 @@ def guardar_json(objeto, nombre_archivo):
         archivo.write("\n")
     print(f"Datos guardados en {nombre_archivo}")
     
+def guardar_lista_json(lista_objetos, nombre_archivo):
+    datos = [obj.to_dict() for obj in lista_objetos] #convertir cada objeto a su diccionario asignado para json
+    with open(nombre_archivo, "w", encoding="utf-8") as archivo:
+        json.dump(datos, archivo, indent=4, ensure_ascii=False)
+    print(f"Se guardaron {len(lista_objetos)} objetos en {nombre_archivo}")
+    
+    
 #objetos para probar
 prof1 = Profesor(
     codigo="P001",
@@ -160,7 +167,7 @@ prof2 = Profesor(
     telefono="3012223344",
     categoria="Asociado",
     horas_contrato=20,
-    tipo_profesor="Ayudante",
+    tipo_profesor="Planta",
     salario_base=800000,
     departamento="Matemáticas",
     materias=None
@@ -211,17 +218,23 @@ ayud1 = ProfesorAyudante(
     creditos=90
 )
 
-guardar_json(prof1, "profesores.json")
-guardar_json(prof2, "profesores.json")
-guardar_json(alum1, "alumnos.json")
-guardar_json(alum2, "alumnos.json")
-guardar_json(ayud1, "ayudantes.json")
+profesores = [prof1, prof2]
+alumnos = [alum1, alum2]
+ayudantes = [ayud1]
+
+guardar_lista_json(profesores, "profesores.json")
+guardar_lista_json(alumnos, "alumnos.json")
+guardar_lista_json(ayudantes, "ayudantes.json")
 
 print("\n--- PROFESORES ---")
-prof1.informacion_profesor()
-print()
-prof2.informacion_profesor()
+for profesor in profesores:
+    profesor.informacion_profesor()
+    print()
 print("\n--- ALUMNOS ---")
-alum1.informacion_alumno()
+for alumno in alumnos:
+    alumno.informacion_alumno()
+    print()
 print("\n--- PROFESORES AYUDANTES ---")
-ayud1.informacion_ayudante()
+for ayudante in ayudantes:
+    ayudante.informacion_ayudante()
+    print()
