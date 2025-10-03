@@ -1,0 +1,49 @@
+[
+    {
+        "nombre": "Ana",
+        "id_empleado": 101,
+        "correo": "ana@mail.com",
+        "telefono": "3001234567",
+        "tipo_empleado": "Junior",
+        "salario": 3000,
+        "lenguaje_principal": "Python",
+        "mentor": "Carlos",
+        "framework": "Django"
+    },
+    {
+        "nombre": "Luis",
+        "id_empleado": 102,
+        "correo": "luis@mail.com",
+        "telefono": "3007654321",
+        "tipo_empleado": "Senior",
+        "salario": 8000,
+        "anios_experiencia": 5,
+        "especialidad": "Backend"
+    },
+    {
+        "nombre": "Marta",
+        "id_empleado": 103,
+        "correo": "marta@mail.com",
+        "telefono": "3009998887",
+        "tipo_empleado": "Tester",
+        "salario": 4000
+    },
+    {
+        "nombre": "Laura",
+        "id_empleado": 104,
+        "correo": "laura@mail.com",
+        "telefono": "3011239876",
+        "tipo_empleado": "Project Manager",
+        "salario": 12000
+    },
+    {
+        "nombre": "Pedro",
+        "id_empleado": 105,
+        "correo": "pedro@mail.com",
+        "telefono": "3027654321",
+        "tipo_empleado": "Lider Tecnico",
+        "salario": 10000,
+        "anios_experiencia": 8,
+        "especialidad": "Arquitectura"
+    }
+]

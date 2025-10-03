@@ -1,0 +1,14 @@
+[
+    {
+        "nombre_proyecto": "Sistema de Inventario",
+        "codigo": "P001",
+        "cliente": "ClienteX",
+        "presupuesto": 50000,
+        "duracion_meses": 10,
+        "equipo_asignado": [
+            "Ana",
+            "Luis",
+            "Marta"
+        ]
+    }
+]
