@@ -21,6 +21,7 @@ f. Calcular el total de la compra, aplicando un descuento si el cliente compra m
 
 g. Guardar los productos en un archivo JSON.
 '''
+from generador import generar_json ,leer_json
 
 class Producto:
     def __init__(self, nombre, precio, cantidad):
@@ -48,6 +49,13 @@ class Producto:
 
     def mostrar_info(self):
         return f"{self.__nombre} - ${self.__precio} - Cantidad: {self.__cantidad}"
+    
+    def to_dict(self):
+        return {
+            "nombre": self.__nombre,
+            "precio": self.__precio,
+            "cantidad": self.__cantidad
+        }
         
 class Electronico(Producto):
     def __init__(self, nombre, precio, cantidad, garantia):
@@ -62,6 +70,11 @@ class Electronico(Producto):
 
     def mostrar_info(self):
         return f"{super().mostrar_info()} - Garantía: {self.__garantia} meses"
+    
+    def to_dict(self):
+        data = super().to_dict()
+        data["garantia"] = self.__garantia
+        return data
 
 
 class Ropa(Producto):
@@ -77,6 +90,11 @@ class Ropa(Producto):
         
     def mostrar_info(self):
         return f"{super().mostrar_info()} - Talla: {self.__talla}"
+    
+    def to_dict(self):
+        data = super().to_dict()
+        data["talla"] = self.__talla
+        return data
 
 
 class Alimento(Producto):
@@ -92,6 +110,11 @@ class Alimento(Producto):
 
     def mostrar_info(self):
         return f"{super().mostrar_info()} - Vence: {self.__caducidad}"
+    
+    def to_dict(self):
+        data = super().to_dict()
+        data["caducidad"] = self.__caducidad
+        return data
 
 
 class SistemaPedidos:
@@ -115,41 +138,35 @@ class SistemaPedidos:
             if producto.get_cantidad() >= cantidad:
                 total = producto.get_precio() * cantidad
                 producto.set_cantidad(producto.get_cantidad() - cantidad)
+                descuento = 0
+                if cantidad > 5:
+                    descuento = total * 10/100  #aplicar descuento del 10%
+                    print(f"Se aplicó un descuento de ${descuento:.2f} por comprar más de 5 unidades.")
                 print(f"Pedido realizado: {cantidad} x {producto.get_nombre()}")
-                print(f"Total a pagar: ${total:.2f}")
+                print(f"Total a pagar: ${total - descuento:.2f}")
+                
+                self.guardar_productos()  # Actualizar el archivo JSON después de cada pedido
             else:
                 print("Stock insuficiente.")
         else:
             print("Producto no encontrado.")
-
-def main():
-    sistema = SistemaPedidos()
-
-    sistema.agregar_producto(Electronico("Laptop", 350000, 10, 24))
-    sistema.agregar_producto(Ropa("Camiseta", 50000, 30, "M"))
-    sistema.agregar_producto(Alimento("Leche", 5000, 20, "10/10/2025"))
-
-    while True:
-        print("""=== MENÚ TIENDA ONLINE ===
-             1. Mostrar productos disponibles
-             2. Realizar pedido
-             3. Salir""")
-        opcion = input("Seleccione una opción: ")
-
-        if opcion == "1":
-            sistema.mostrar_productos()
-
-        elif opcion == "2":
-            nombre = input("Ingrese el nombre del producto: ")
-            cantidad = int(input("Ingrese la cantidad: "))
-            sistema.realizar_pedido(nombre, cantidad)
             
-        elif opcion == "3":
-            print("¡Gracias por su compra!")
-            break
+    def guardar_productos(self, archivo="productos.json"):
+        datos = []
+        for p in self.__productos.values():
+            datos.append(p.to_dict())
+            
+        generar_json(archivo, datos)
+        print(f"stock actualizado en {archivo}")
 
+    # Cargar productos desde el archivo JSON
+    def cargar_productos(self, direccion_archivo):
+        productos = leer_json(direccion_archivo)
+        if productos:
+            print("\n---Lista de productos guardados---")
+            for producto in productos:
+                print(f"Nombre: {producto['nombre']}, Precio: {producto['precio']}, "
+                      f"Cantidad: {producto['cantidad']}, Tipo: {producto['tipo']}")
         else:
-            print("Opción inválida. Intente de nuevo.")
+            print("No se pudieron cargar los productos o el archivo está vacío.")
 
-if __name__ == "__main__":
-    main()
